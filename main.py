@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import auth, barang
+from routes import auth, barang, transaksi   # <--- tambahkan transaksi
 from config.db import engine, Base
 
 # Create tables
@@ -20,6 +20,7 @@ app.add_middleware(
 # Include routers
 app.include_router(auth.router)
 app.include_router(barang.router)
+app.include_router(transaksi.router)   # <--- tambahkan ini
 
 @app.get("/")
 def read_root():
